@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "DB_CLOSE_DELAY",
+      "type": "java.lang.String",
+      "description": "Description for DB_CLOSE_DELAY."
+  }
+] }
