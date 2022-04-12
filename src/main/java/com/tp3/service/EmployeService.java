@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeService {
@@ -131,5 +132,13 @@ public class EmployeService {
                 .adresse( adresse )
                 .build();
         clientRepository.save( client );
+    }
+
+    public Client getClient ( long id ) throws ClientNotFoundException {
+        Optional<Client> client = clientRepository.findById( id );
+        if ( client.isPresent() ) {
+            return client.get();
+        }
+        throw new ClientNotFoundException( "Pas de client enregistré avec l'ID" + id );
     }
 }
