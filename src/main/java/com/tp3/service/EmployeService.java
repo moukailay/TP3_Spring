@@ -188,4 +188,17 @@ public class EmployeService {
         return doc;
     }
 
+    public void findAllPretDocumentClient ( Client client ) throws DocumentNotFoundException {
+        List<PretDocument> pretDoc = pretDocumentRepository.findAll();
+        if ( pretDoc.isEmpty() ) {
+            throw new DocumentNotFoundException( "Pas de document" );
+        }
+        System.out.println( "Liste des livres empruntés par le client " + client.getNom() + " " + client.getPrenom() );
+        System.out.println( "TITRE             AUTEUR            DATE RETOUR" );
+        for ( PretDocument pret : pretDoc ) {
+            if ( pret.getClient().getIdUser() == client.getIdUser() ) {
+                System.out.println( pret.getDocument().getTitre() + "             " + pret.getDocument().getAuteur() + "         " + simpleDateFormat.format( pret.getDateRetour() ) );
+            }
+        }
+    }
 }
