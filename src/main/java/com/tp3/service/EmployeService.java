@@ -1,5 +1,6 @@
 package com.tp3.service;
 
+import com.tp3.execeptions.ClientNotFoundException;
 import com.tp3.model.*;
 import com.tp3.persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
