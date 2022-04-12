@@ -240,4 +240,9 @@ public class EmployeService {
         Optional<Document> doc = documentRepository.findById( id );
         return doc.get();
     }
+
+    public PretDocument getPretDocument ( long id ) {
+        Optional<PretDocument> pretDoc = pretDocumentRepository.findById( id );
+        return pretDoc.get();
+    }
 }
