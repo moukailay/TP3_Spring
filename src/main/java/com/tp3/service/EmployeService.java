@@ -180,4 +180,12 @@ public class EmployeService {
         return doc;
     }
 
+    public List<Document> findByAuteurDocument ( String auteur ) throws DocumentNotFoundException {
+        List<Document> doc = documentRepository.findByAuteur( auteur );
+        if ( doc.isEmpty() ) {
+            throw new DocumentNotFoundException( "Pas de document" );
+        }
+        return doc;
+    }
+
 }
