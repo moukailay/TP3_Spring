@@ -201,4 +201,9 @@ public class EmployeService {
             }
         }
     }
+
+    public List<PretDocument> findAllPretDocumentEnCours () {
+        List<PretDocument> pretDoc = pretDocumentRepository.findByStatutRetour( "non retourné" );
+        return pretDoc;
+    }
 }
