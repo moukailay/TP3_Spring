@@ -163,4 +163,13 @@ public class EmployeService {
         }
         return doc;
     }
+
+    public List<Document> findByCategorieDocument ( String genre ) throws DocumentNotFoundException {
+        List<Document> doc = documentRepository.findByGenre( genre );
+        if ( doc.isEmpty() ) {
+            throw new DocumentNotFoundException( "Pas de document" );
+        }
+        return doc;
+    }
+
 }
