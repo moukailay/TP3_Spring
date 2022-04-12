@@ -143,5 +143,11 @@ public class EmployeService {
         throw new ClientNotFoundException( "Pas de client enregistré avec l'ID" + id );
     }
 
-
+    public void supprimerClient ( Long id ) throws ClientNotFoundException {
+        Long count = clientRepository.countByIdUser( id );
+        if ( count == null || count == 0 ) {
+            throw new ClientNotFoundException( "Pas de client enregistré avec l'ID" + id );
+        }
+        clientRepository.deleteById( id );
+    }
 }
