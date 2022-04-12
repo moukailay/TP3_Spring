@@ -206,4 +206,25 @@ public class EmployeService {
         List<PretDocument> pretDoc = pretDocumentRepository.findByStatutRetour( "non retourné" );
         return pretDoc;
     }
+
+    public void enregistrerPret ( Date datePret ,
+                                  Client client ,
+                                  Document document ,
+                                  String statutRetour )
+            throws ParseException {
+        if ( document.getNbExemplaire() > 0 ) {
+            PretDocument pret = PretDocument.builder()
+                    .datePret( datePret )
+                    .dateRetour( calculerDateRetour( document.getDureeMaxPret() ) )
+                    .client( client )
+                    .document( document )
+                    .statutRetour( statutRetour )
+                    .build();
+            pretDocumentRepository.save( pret );
+            document.setNbExemplaire( document.getNbExemplaire() - 1 );
+            documentRepository.save( document );
+        } else {
+            System.out.println( "le Document " + document.getTitre() + " n'est pas disponible" );
+        }
+    }
 }
