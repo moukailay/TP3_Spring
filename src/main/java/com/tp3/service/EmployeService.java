@@ -1,8 +1,6 @@
 package com.tp3.service;
 
-import com.tp3.model.Client;
-import com.tp3.model.Document;
-import com.tp3.model.Livre;
+import com.tp3.model.*;
 import com.tp3.persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,5 +59,77 @@ public class EmployeService {
 
     public List<Document> listeDocument () {
         return documentRepository.findAll();
+    }
+
+    public void enregistrerLivre ( String titre ,
+                                   String auteur ,
+                                   String editeur ,
+                                   int nbExemplaire ,
+                                   Date datePub ,
+                                   String genre ,
+                                   int dureeMaxPret ,
+                                   int nbPages ) {
+        Livre livre = Livre.builder()
+                .titre( titre )
+                .auteur( auteur )
+                .editeur( editeur )
+                .datePub( datePub )
+                .genre( genre )
+                .nbExemplaire( nbExemplaire )
+                .dureeMaxPret( dureeMaxPret )
+                .nbPages( nbPages )
+                .build();
+        livreRepository.save( livre );
+    }
+
+    public void enregistrerCd ( String titre ,
+                                String auteur ,
+                                String editeur ,
+                                int nbExemplaire ,
+                                Date datePub ,
+                                String genre ,
+                                int dureeMaxPret ,
+                                int duree ) {
+        Cd cd = Cd.builder()
+                .titre( titre )
+                .auteur( auteur )
+                .editeur( editeur )
+                .datePub( datePub )
+                .genre( genre )
+                .nbExemplaire( nbExemplaire )
+                .dureeMaxPret( dureeMaxPret )
+                .duree( duree )
+                .build();
+        cdRepository.save( cd );
+    }
+
+    public void enregistrerDvd ( String titre ,
+                                 String auteur ,
+                                 String editeur ,
+                                 int nbExemplaire ,
+                                 Date datePub ,
+                                 String genre ,
+                                 int dureeMaxPret ,
+                                 int duree ) {
+        Dvd dvd = Dvd.builder()
+                .titre( titre )
+                .auteur( auteur )
+                .editeur( editeur )
+                .datePub( datePub )
+                .genre( genre )
+                .nbExemplaire( nbExemplaire )
+                .dureeMaxPret( dureeMaxPret )
+                .duree( duree )
+                .build();
+        dvdRepository.save( dvd );
+    }
+
+    public void enregistrerClient ( String nom , String prenom , String adresse ) {
+        Client client = Client.builder()
+                .nom( nom )
+                .prenom( prenom )
+                .adresse( adresse )
+                .build();
+        clientRepository.save( client );
     }
 }
