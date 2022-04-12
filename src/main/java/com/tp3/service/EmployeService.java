@@ -227,4 +227,12 @@ public class EmployeService {
             System.out.println( "le Document " + document.getTitre() + " n'est pas disponible" );
         }
     }
+
+    public void supprimerPret ( Long id ) throws ClientNotFoundException {
+        int count = pretDocumentRepository.countByIdPret( id );
+        if ( count == 0 ) {
+            throw new ClientNotFoundException( "Pas d'emprunt enregistré avec l'ID" + id );
+        }
+        pretDocumentRepository.deleteById( id );
+    }
 }
