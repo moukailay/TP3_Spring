@@ -172,4 +172,12 @@ public class EmployeService {
         return doc;
     }
 
+    public List<Document> findByAnneeDocument ( int annee ) throws DocumentNotFoundException {
+        List<Document> doc = documentRepository.findByAnnePub( annee );
+        if ( doc.isEmpty() ) {
+            throw new DocumentNotFoundException( "Pas de document" );
+        }
+        return doc;
+    }
+
 }
