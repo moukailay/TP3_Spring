@@ -4,7 +4,10 @@ import com.tp3.persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 @Service
 public class EmployeService {
@@ -33,5 +36,14 @@ public class EmployeService {
         this.amendeRepository = amendeRepository;
         this.pretDocumentRepository = pretDocumentRepository;
         this.documentRepository = documentRepository;
+    }
+
+    public static Date CalculerDateRetour ( int nombreJour ) throws ParseException {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat( "yyyy-MM-dd" );
+        Calendar cal = Calendar.getInstance();
+        cal.setTime( new Date() );
+        cal.add( Calendar.DATE , nombreJour );
+
+        return simpleDateFormat.parse( simpleDateFormat.format( cal.getTime() ) );
     }
 }
