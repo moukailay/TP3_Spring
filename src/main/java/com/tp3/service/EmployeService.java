@@ -150,4 +150,8 @@ public class EmployeService {
         }
         clientRepository.deleteById( id );
     }
+
+    public void enregistrerDocument ( Document document ) {
+        documentRepository.save( document );
+    }
 }
