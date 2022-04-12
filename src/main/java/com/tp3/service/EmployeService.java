@@ -235,4 +235,9 @@ public class EmployeService {
         }
         pretDocumentRepository.deleteById( id );
     }
+
+    public Document getDocument ( long id ) {
+        Optional<Document> doc = documentRepository.findById( id );
+        return doc.get();
+    }
 }
