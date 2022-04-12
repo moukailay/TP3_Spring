@@ -154,4 +154,12 @@ public class EmployeService {
     public void enregistrerDocument ( Document document ) {
         documentRepository.save( document );
     }
+
+    public List<Document> findByTitreDocument ( String titre ) throws DocumentNotFoundException {
+        List<Document> doc = documentRepository.findByTitreContains( titre );
+        if ( doc.isEmpty() ) {
+            throw new DocumentNotFoundException( "Pas de document" );
+        }
+        return doc;
+    }
 }
