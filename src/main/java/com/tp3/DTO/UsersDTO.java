@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class UsersDTO {
-    private Long id;
+    private Long idUser;
     private String nom;
     private String prenom;
 
@@ -17,7 +17,7 @@ public class UsersDTO {
     }
 
     public UsersDTO(UsersDTO usersDTO) {
-        usersDTO.setId( usersDTO.getId() );
+        usersDTO.setIdUser( usersDTO.getIdUser() );
         usersDTO.setNom( usersDTO.getNom() );
         usersDTO.setPrenom( usersDTO.getPrenom() );
     }
