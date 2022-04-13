@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>gestion bibliotheque</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container-fluid text-center">
+    <div><h2>Gestion des clients</h2></div>
+    <div class="m-2">
+        <a class="h3 btn btn-danger" th:href="@{/client/nouveau}">Ajouter un client</a>
+    </div>
+    <div th:if="${message}" class="alert alert-success text-center">
+        [[${message}]]
+    </div>
+    <div>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>NOM</th>
+                <th>PRENOM</th>
+                <th>ADRESSE</th>
+
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="client:${listeClient}">
+                <td th:text="${client.idUser}"></td>
+                <td th:text="${client.nom}"></td>
+                <td th:text="${client.prenom}"></td>
+                <td th:text="${client.adresse}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="container-fluid text-center">
+    <a  class="h4 btn btn-primary" th:href="@{'/'}">aller à bibliothèque</a>
+</div>
+</body>
+</html>
