@@ -1,5 +1,6 @@
 package com.tp3.controller;
 
+import com.tp3.DTO.ClientDTO;
 import com.tp3.model.Client;
 import com.tp3.service.EmployeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,14 +31,14 @@ public class ClientController {
 
     @GetMapping("/client/nouveau")
     public String afficherFormulaireClient(Model model) {
-        model.addAttribute("client", new Client());
+        model.addAttribute("client", new ClientDTO());
         model.addAttribute("titrePage", "Ajout nouveau Client");
         return "formulaireClient";
     }
 
     @PostMapping("/client/enregistrer")
-    private String EnregistrerClient(Client client, RedirectAttributes ra) {
-        employeService.enregistrerClient(client.getNom(), client.getPrenom(), client.getAdresse());
+    private String EnregistrerClient(ClientDTO clientDTO, RedirectAttributes ra) {
+        employeService.enregistrerClient(clientDTO.getNom(), clientDTO.getPrenom(), clientDTO.getAdresse());
         ra.addFlashAttribute("message", "Le client a été sauvegardé");
         return "redirect:/client";
     }
