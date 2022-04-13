@@ -29,11 +29,16 @@ public class Tp3SpringApplication implements CommandLineRunner {
     @SneakyThrows
     @Override
     public void run ( String... args ) {
-        employeService.enregistrerClient( "YAHAYA" , "MOUKAILA" , "QUEBEC" );
-        employeService.enregistrerClient( "HASSAN" , "BEN" , "CHICOUTIMI" );
+        employeService.enregistrerClient( "YAHAYA" ,
+                "MOUKAILA" ,
+                "QUEBEC" );
+        employeService.enregistrerClient( "HASSAN" ,
+                "BEN" ,
+                "CHICOUTIMI" );
 
         //Enregistrement des documents
-        employeService.enregistrerLivre( "penser avec donna hathaway" ,
+        employeService.enregistrerLivre(
+                "penser avec donna hathaway" ,
                 "Williams" ,
                 "puf" ,
                 1 ,
@@ -126,14 +131,22 @@ public class Tp3SpringApplication implements CommandLineRunner {
         System.out.println();
 
         //ENREGISTREMENT DES PRETS DE DOCUMENTS<<<<<<<<<<<<<<<<<<<<<< cas normaux
-        employeService.enregistrerPret( new Date() , employeService.getClient( 1 ) , employeService.getDocument( 3 ) , "non retourné" );
+        employeService.enregistrerPret( new Date() ,
+                employeService.getClient( 1 ) ,
+                employeService.getDocument( 3 ) ,
+                "non retourné" );
 
-        employeService.enregistrerPret( new Date() , employeService.getClient( 2 ) , employeService.getDocument( 4 ) , "non retourné" );
-        employeService.enregistrerPret( new Date() , employeService.getClient( 1 ) , employeService.getDocument( 6 ) , "non retourné" );
+        employeService.enregistrerPret( new Date() ,
+                employeService.getClient( 2 ) ,
+                employeService.getDocument( 4 ) ,
+                "non retourné" );
 
+        employeService.enregistrerPret( new Date() ,
+                employeService.getClient( 1 ) ,
+                employeService.getDocument( 6 ) ,
+                "non retourné" );
 
         //Affichage des documents empruntés par le client ID=1
-
         try {
             employeService.findAllPretDocumentClient( employeService.getClient( 1 ) );
         } catch (DocumentNotFoundException e) {
@@ -142,9 +155,12 @@ public class Tp3SpringApplication implements CommandLineRunner {
 
         System.out.println();
 
-        //ENREGISTREMENT pret DOCUMENTS (document avec zéro exemplaire)<<<<<<<<<<<<<<<<<<<<<<
+        //ENREGISTREMENT pret DOCUMENTS (document avec zéro exemplaire)<<<<<<<<<<<<<
         //échec d'emprunt
 
-        employeService.enregistrerPret( new Date() , employeService.getClient( 2 ) , employeService.getDocument( 3 ) , "non retourné" );
+        employeService.enregistrerPret( new Date() ,
+                employeService.getClient( 2 ) ,
+                employeService.getDocument( 3 ) ,
+                "non retourné" );
     }
 }
