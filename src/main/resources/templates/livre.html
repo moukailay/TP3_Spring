@@ -11,6 +11,7 @@
     <div class="m-2">
         <a class="h3 btn btn-danger" th:href="@{/livre/nouveau}">Ajouter un livre</a>
     </div>
+    <!--/*@thymesVar id="message" type=""*/-->
     <div th:if="${message}" class="alert alert-success text-center">
         [[${message}]]
     </div>

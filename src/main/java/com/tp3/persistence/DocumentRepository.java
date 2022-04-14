@@ -1,8 +1,6 @@
 package com.tp3.persistence;
 
-import com.tp3.model.Client;
 import com.tp3.model.Document;
-import com.tp3.model.Livre;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

@@ -1,6 +1,6 @@
 package com.tp3.controller;
 
-import com.tp3.model.Livre;
+import com.tp3.model.LivreDTO;
 import com.tp3.service.EmployeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,28 +24,28 @@ public class LivreController {
     @GetMapping("/livre")
     public String afficherListeLivre(Model model) {
 
-        List<Livre> listeLivre = employeService.listeLivre();
+        List<LivreDTO> listeLivre = employeService.listeLivre();
         model.addAttribute("listeLivre", listeLivre);
         return "livre";
     }
 
     @GetMapping("/livre/nouveau")
-    public String afficherFormulaireLivre(Model model, String idc, String idl) {
-        model.addAttribute("livre", new Livre());
-        model.addAttribute("titrePage", "Ajout nouveau Livre");
+    public String afficherFormulaireLivre ( Model model ) {
+        model.addAttribute("livre", new com.tp3.DTO.LivreDTO());
+        model.addAttribute("titrePage", "Ajout nouveau LivreDTO");
         return "formulaireLivre";
     }
 
     @PostMapping("/livre/enregistrer")
-    private String EnregistrerLivre(Livre livre, RedirectAttributes ra) {
-        employeService.enregistrerLivre(livre.getTitre(),
-                livre.getAuteur(),
-                livre.getEditeur(),
-                livre.getNbExemplaire(),
-                livre.getDatePub(),
-                livre.getGenre(),
-                livre.getDureeMaxPret(),
-                livre.getNbPages());
+    private String EnregistrerLivre( LivreDTO livreDTO, RedirectAttributes ra) {
+        employeService.enregistrerLivre(livreDTO.getTitre(),
+                livreDTO.getAuteur(),
+                livreDTO.getEditeur(),
+                livreDTO.getNbExemplaire(),
+                livreDTO.getDatePub(),
+                livreDTO.getGenre(),
+                livreDTO.getDureeMaxPret(),
+                livreDTO.getNbPages());
         ra.addFlashAttribute("message", "Le livre a été sauvegardé");
         return "redirect:/livre";
     }
