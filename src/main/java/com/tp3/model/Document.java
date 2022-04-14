@@ -27,9 +27,11 @@ public class Document {
     private String auteur;
     private String editeur;
     private int nbExemplaire;
+
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date datePub;
+
     private String genre;
     private int dureeMaxPret;
 
