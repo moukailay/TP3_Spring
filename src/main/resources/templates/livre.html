@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>gestion bibliotheque</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container-fluid text-center">
+    <div><h2>Gestion des livres</h2></div>
+    <div class="m-2">
+        <a class="h3 btn btn-danger" th:href="@{/livre/nouveau}">Ajouter un livre</a>
+    </div>
+    <div th:if="${message}" class="alert alert-success text-center">
+        [[${message}]]
+    </div>
+    <div>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                  <th>ID</th>
+                  <th>TITRE</th>
+                  <th>AUTEUR</th>
+                  <th>EDITEUR</th>
+                  <th>DATE PUB</th>
+                  <th>CATEGORIE</th>
+                  <th>DUREE PRET</th>
+                  <th>EXEMPLAIRE</th>
+                  <th>NOMBRE PAGE</th>
+
+
+              </tr>
+            </thead>
+            <tbody>
+
+             <tr th:each="livre : ${listeLivre}">
+                 <td th:text="${livre.idDoc}"></td>
+                 <td th:text="${livre.titre}"></td>
+                 <td th:text="${livre.auteur}"></td>
+                 <td th:text="${livre.editeur}"></td>
+                 <td th:text="${livre.datePub}"></td>
+                 <td th:text="${livre.genre}"></td>
+                 <td th:text="${livre.dureeMaxPret}"></td>
+                 <td th:text="${livre.nbExemplaire}"></td>
+                 <td th:text="${livre.nbPages}"></td>
+             </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="container-fluid text-center">
+    <a  class="h4 btn btn-primary" th:href="@{'/'}">aller à bibliothèque</a>
+</div>
+</body>
+</html>
