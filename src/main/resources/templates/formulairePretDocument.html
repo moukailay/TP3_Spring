@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${titrePage}]]</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container-fluid ">
+    <div class="text-center"><h2>[[${titrePage}]]</h2></div>
+    <form th:action="@{/pretDocument/enregistrer}" method="post" style="max-width:800px; margin:0 auto;">
+
+
+        <div class="border border-secondary rounded p-3">
+            <div class="form-group row">
+
+                <label class="ml-1 mr-1">Nom et prénom du client</label>
+                <div >
+                    <select class="form-control" id="client" name="idClient" >
+                        <option value="0">Selectionnez un client</option>
+                        <option th:each="client : ${listeClient}" th:value="${client.idUser}" th:text="${client.nom}+' '+${client.prenom}" ></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+
+                <label class="ml-1 mr-1">Auteur et titre du livre</label>
+                <div >
+                    <select class="form-control" name="idLivre" >
+                        <option value="0">Selectionnez un livre</option>
+                        <option th:each="livre : ${listeLivre}" th:value="${livre.idDoc}" th:text="${livre.auteur}+' '+${livre.titre}" ></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary m-2">Enregistrer</button>
+                <button type="button" class="btn btn-secondary m-2" onclick="annulerAjoutLivre()">Annuler</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    function annulerAjoutLivre()
+    {
+    window.location="[[@{/pretDocument}]]";
+    }
+
+</script>
+</body>
+</html>
