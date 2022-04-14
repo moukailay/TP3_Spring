@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>gestion bibliotheque</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container-fluid text-center">
+    <div><h2>Liste des livres en cours d'emprunt</h2></div>
+    <div class="m-2">
+        <a class="h3 btn btn-danger" th:href="@{/pretDocument/nouveau}">Ajouter un emprunt</a>
+    </div>
+    <div th:if="${message}" class="alert alert-success text-center">
+        [[${message}]]
+    </div>
+    <div>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                  <th>ID PRET</th>
+                  <th>NOM CLIENT</th>
+                  <th>PRENOM CLIENT</th>
+                  <th>TITRE DU LIVRE</th>
+                  <th>AUTEUR</th>
+                  <th>DATE PRET</th>
+                  <th>DATE RETOUR</th>
+                  <th>CONFIRMER RETOUR</th>
+              </tr>
+            </thead>
+            <tbody>
+
+             <tr th:each="pretDocument : ${listePret}">
+                 <td th:text="${pretDocument.idPret}"></td>
+                 <td th:text="${pretDocument.client.nom}"></td>
+                 <td th:text="${pretDocument.client.prenom}"></td>
+                 <td th:text="${pretDocument.document.titre}"></td>
+                 <td th:text="${pretDocument.document.auteur}"></td>
+                 <td th:text="${pretDocument.datePret}"></td>
+                 <td th:text="${pretDocument.dateRetour}"></td>
+                 <td>
+                     <a class="h4 btn btn-info" th:href="@{'/pretDocument/confirmerRetour/'+${pretDocument.idPret}}"> Confirmer</a>
+                 </td>
+             </tr>
+            </tbody>
+        </table>
+        <div>
+            <a  class="h4 btn btn-primary" th:href="@{'/'}">aller à bibliothèque</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
