@@ -26,4 +26,8 @@ public class LivreDTO extends DocumentDTO{
               dureeMaxPret);
       this.nbPages = nbPages;
    }
+
+    public LivreDTO () {
+
+    }
 }
