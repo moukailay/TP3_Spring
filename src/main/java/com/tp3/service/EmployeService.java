@@ -56,7 +56,7 @@ public class EmployeService {
         return clientRepository.findAll();
     }
 
-    public List<LivreDTO> listeLivre () {
+    public List<Livre> listeLivre () {
         return livreRepository.findAll();
     }
 
@@ -72,7 +72,7 @@ public class EmployeService {
                                    String genre ,
                                    int dureeMaxPret ,
                                    int nbPages ) {
-        LivreDTO livre = LivreDTO.builder()
+        Livre livre = Livre.builder()
                 .titre( titre )
                 .auteur( auteur )
                 .editeur( editeur )

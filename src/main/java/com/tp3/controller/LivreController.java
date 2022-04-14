@@ -1,6 +1,6 @@
 package com.tp3.controller;
 
-import com.tp3.model.LivreDTO;
+import com.tp3.model.Livre;
 import com.tp3.service.EmployeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +24,7 @@ public class LivreController {
     @GetMapping("/livre")
     public String afficherListeLivre(Model model) {
 
-        List<LivreDTO> listeLivre = employeService.listeLivre();
+        List<Livre> listeLivre = employeService.listeLivre();
         model.addAttribute("listeLivre", listeLivre);
         return "livre";
     }
@@ -32,12 +32,12 @@ public class LivreController {
     @GetMapping("/livre/nouveau")
     public String afficherFormulaireLivre ( Model model ) {
         model.addAttribute("livre", new com.tp3.DTO.LivreDTO());
-        model.addAttribute("titrePage", "Ajout nouveau LivreDTO");
+        model.addAttribute("titrePage", "Ajout nouveau Livre");
         return "formulaireLivre";
     }
 
     @PostMapping("/livre/enregistrer")
-    private String EnregistrerLivre( LivreDTO livreDTO, RedirectAttributes ra) {
+    private String EnregistrerLivre( Livre livreDTO, RedirectAttributes ra) {
         employeService.enregistrerLivre(livreDTO.getTitre(),
                 livreDTO.getAuteur(),
                 livreDTO.getEditeur(),

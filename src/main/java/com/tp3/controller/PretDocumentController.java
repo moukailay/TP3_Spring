@@ -1,10 +1,9 @@
 package com.tp3.controller;
 
-import com.tp3.DTO.ClientDTO;
 import com.tp3.execeptions.ClientNotFoundException;
 import com.tp3.model.Client;
 import com.tp3.model.Document;
-import com.tp3.model.LivreDTO;
+import com.tp3.model.Livre;
 import com.tp3.model.PretDocument;
 import com.tp3.service.EmployeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +38,7 @@ public class PretDocumentController {
 
     @GetMapping("/pretDocument/nouveau")
     public String afficherFormulairePret ( Model model ) {
-        List<LivreDTO> livres = employeService.listeLivre();
+        List<Livre> livres = employeService.listeLivre();
         List<Client> clients = employeService.listeClient();
 
         model.addAttribute( "listeLivre" , livres );

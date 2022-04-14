@@ -16,17 +16,17 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(callSuper = true, includeFieldNames = true)
-public class LivreDTO extends Document {
+public class Livre extends Document {
     private int nbPages;
 
-    public LivreDTO ( String titre ,
-                      String auteur ,
-                      String editeur ,
-                      int nbExemplaire ,
-                      Date datePub ,
-                      String genre ,
-                      int dureeMaxPret ,
-                      int nbPages ) {
+    public Livre ( String titre ,
+                   String auteur ,
+                   String editeur ,
+                   int nbExemplaire ,
+                   Date datePub ,
+                   String genre ,
+                   int dureeMaxPret ,
+                   int nbPages ) {
         super( titre ,
                 auteur ,
                 editeur ,
