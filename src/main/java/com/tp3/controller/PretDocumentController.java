@@ -52,16 +52,20 @@ public class PretDocumentController {
     private String EnregistrerLivre ( RedirectAttributes ra ,
                                       @RequestParam(name = "idLivre", defaultValue = "") String idLivre ,
                                       @RequestParam(name = "idClient", defaultValue = "") String idClient )
-                                      throws ClientNotFoundException, ParseException {
+            throws ClientNotFoundException, ParseException {
         Document doc = employeService.getDocument( Integer.parseInt( idLivre ) );
         if ( doc.getNbExemplaire() > 0 ) {
             employeService.enregistrerPret( new Date() ,
                     employeService.getClient( Integer.parseInt( idClient ) ) ,
                     employeService.getDocument( Integer.parseInt( idLivre ) ) ,
                     "non retourné" );
-            ra.addFlashAttribute( "message" , "L'emprunt a été sauvegardé" );
+            ra.addFlashAttribute(
+                    "message" ,
+                    "L'emprunt a été sauvegardé" );
         } else {
-            ra.addFlashAttribute( "message" , "Le document n'est pas disponible pour un emprunt !" );
+            ra.addFlashAttribute(
+                    "message" ,
+                    "Le document n'est pas disponible pour un emprunt !" );
         }
         return "redirect:/pretDocument";
     }
@@ -80,5 +84,4 @@ public class PretDocumentController {
         }
         return "redirect:/pretDocument";
     }
-
 }

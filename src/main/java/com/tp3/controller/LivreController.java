@@ -37,7 +37,7 @@ public class LivreController {
     }
 
     @PostMapping("/livre/enregistrer")
-    private String EnregistrerLivre( Livre livreDTO, RedirectAttributes ra) {
+    private String EnregistrerLivre( Livre livreDTO, RedirectAttributes redirection) {
         employeService.enregistrerLivre(livreDTO.getTitre(),
                 livreDTO.getAuteur(),
                 livreDTO.getEditeur(),
@@ -46,7 +46,9 @@ public class LivreController {
                 livreDTO.getGenre(),
                 livreDTO.getDureeMaxPret(),
                 livreDTO.getNbPages());
-        ra.addFlashAttribute("message", "Le livre a été sauvegardé");
+        redirection.addFlashAttribute(
+                "message",
+                "Le livre a été sauvegardé avec succès");
         return "redirect:/livre";
     }
 }

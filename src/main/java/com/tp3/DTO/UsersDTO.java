@@ -16,9 +16,4 @@ public class UsersDTO {
         this.prenom = prenom;
     }
 
-    public UsersDTO(UsersDTO usersDTO) {
-        usersDTO.setIdUser( usersDTO.getIdUser() );
-        usersDTO.setNom( usersDTO.getNom() );
-        usersDTO.setPrenom( usersDTO.getPrenom() );
-    }
 }
