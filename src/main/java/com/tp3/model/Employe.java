@@ -8,6 +8,9 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Data
@@ -17,6 +20,10 @@ import javax.persistence.Entity;
 @ToString(callSuper = true)
 
 public class Employe extends Users {
+
+    @NotNull
+    @NotBlank
+    @Size(min=5)
     private String adresse;
 
     public Employe ( String nom , String prenom , String adresse ) {

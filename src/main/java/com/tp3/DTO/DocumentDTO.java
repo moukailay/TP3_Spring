@@ -2,12 +2,18 @@ package com.tp3.DTO;
 
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Data
 public class DocumentDTO {
     private long idDoc;
 
+    @NotNull
+    @NotBlank
+    @Size(min=5, max = 100)
     private String titre;
     private String auteur;
     private String editeur;

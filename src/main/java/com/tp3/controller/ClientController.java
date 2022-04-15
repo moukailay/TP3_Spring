@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -37,7 +38,7 @@ public class ClientController {
     }
 
     @PostMapping("/client/enregistrer")
-    private String EnregistrerClient(Client client, RedirectAttributes ra) {
+    private String EnregistrerClient( @Valid Client client, RedirectAttributes ra) {
         employeService.enregistrerClient(client.getNom(), client.getPrenom(), client.getAdresse());
         ra.addFlashAttribute("message", "Le client a été sauvegardé");
         return "redirect:/client";

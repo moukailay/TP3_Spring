@@ -8,6 +8,9 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Data
@@ -21,7 +24,14 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idUser;
 
+    @NotNull
+    @NotBlank
+    @Size(min=5)
     private String nom;
+
+    @NotNull
+    @NotBlank
+    @Size(min=5)
     private String prenom;
 
     public Users ( String nom , String prenom ) {
