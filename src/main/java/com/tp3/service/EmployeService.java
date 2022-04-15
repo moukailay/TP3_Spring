@@ -1,5 +1,6 @@
 package com.tp3.service;
 
+import com.tp3.DTO.ClientDTO;
 import com.tp3.execeptions.ClientNotFoundException;
 import com.tp3.execeptions.DocumentNotFoundException;
 import com.tp3.model.*;
@@ -135,6 +136,15 @@ public class EmployeService {
                 .build();
         clientRepository.save( client );
     }
+
+   /* public void saveClientDTO(String nom, String prenom, String adresse) {
+        ClientDTO clientDTO = ClientDTO.builder()
+                .nom( nom )
+                .prenom( prenom )
+                .adresse( adresse )
+                .build();
+        clientRepository.saveClientDTO( clientDTO );
+    }*/
 
     public Client getClient ( long id ) throws ClientNotFoundException {
         Optional<Client> client = clientRepository.findById( id );

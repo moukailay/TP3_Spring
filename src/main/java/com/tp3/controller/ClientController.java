@@ -37,10 +37,8 @@ public class ClientController {
     }
 
     @PostMapping("/client/enregistrer")
-    private String EnregistrerClient(ClientDTO clientDTO, RedirectAttributes ra) {
-        employeService.enregistrerClient(clientDTO.getNom(),
-                clientDTO.getPrenom(),
-                clientDTO.getAdresse());
+    private String EnregistrerClient(Client client, RedirectAttributes ra) {
+        employeService.enregistrerClient(client.getNom(), client.getPrenom(), client.getAdresse());
         ra.addFlashAttribute("message", "Le client a été sauvegardé");
         return "redirect:/client";
     }
